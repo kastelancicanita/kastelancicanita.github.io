@@ -340,22 +340,33 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  function setLang(lang) {
-    document.querySelectorAll(".lang-btn").forEach(btn => {
-      btn.classList.toggle("active", btn.textContent.toLowerCase() === lang);
-    });
-    document.querySelectorAll("[data-hr][data-en]").forEach(el => {
-      const text = el.getAttribute("data-" + lang);
-      if (text) el.innerHTML = text;
-    });
-    document.querySelectorAll("[data-en-href]").forEach(el => {
-      if (lang === "en") {
-        el.setAttribute("href", el.getAttribute("data-en-href"));
-      } else {
-        const hrHref = el.getAttribute("data-hr-href");
-        if (hrHref) el.setAttribute("href", hrHref);
-      }
-    });
-    document.documentElement.lang = lang;
-    document.title = lang === "en"
-      ? "A Digital 
+  <script>
+function setLang(lang) {
+  // 1. Mijenja sav tekst koji ima data-en i data-hr
+  document.querySelectorAll("[data-hr][data-en]").forEach(el => {
+    const text = el.getAttribute("data-" + lang);
+    if (text) el.innerHTML = text;
+  });
+
+  // 2. Mijenja linkove (npr. WhatsApp za engleski)
+  document.querySelectorAll("[data-en-href]").forEach(el => {
+    if (lang === "en") {
+      const enHref = el.getAttribute("data-en-href");
+      if (enHref) el.setAttribute("href", enHref);
+    } else {
+      const hrHref = el.getAttribute("data-hr-href") || el.getAttribute("href");
+      el.setAttribute("href", hrHref);
+    }
+  });
+
+  // 3. Mijenja naslov u tabu preglednika
+  document.title = lang === "en" ? "A Digital - Digital Marketing Services" : "A Digital - Usluge digitalnog marketinga";
+  
+  // 4. Označava koji je gumb (HR/EN) trenutno aktivan
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.textContent.toLowerCase() === lang);
+  });
+}
+</script>
+</body>
+</html>
