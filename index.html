@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Digital | Digitalne usluge za lokalne biznise</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000000;
+    --accent: #7a6200;
+    --surface: rgba(255,255,255,0.82);
+    --surface-strong: rgba(255,255,255,0.94);
+    --muted: rgba(0,0,0,0.58);
+    --light-muted: rgba(255,255,255,0.72);
+    --font-body: "Cormorant Garamond", Georgia, serif;
+    --font-accent: "Playfair Display", Georgia, serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: var(--font-body);
+    background: url("pozadina.png") center top / cover fixed;
+    color: var(--black);
+    overflow-x:hidden;
+  }
+
+  .site-header { position:fixed; top:0; left:0; right:0; z-index:999; padding:12px 32px; background:transparent; display:flex; align-items:center; justify-content:flex-end; gap:16px; }
+  .header-wa { display:inline-flex; align-items:center; gap:10px; padding:11px 22px; border:1px solid var(--accent); color:var(--accent); text-decoration:none; font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:600; transition:all 0.3s ease; background:transparent; white-space:nowrap; }
+  .header-wa svg { width:15px; height:15px; fill:currentColor; flex-shrink:0; }
+  .header-wa:hover { background:var(--accent); color:white; }
+  .lang-switcher { display:flex; gap:4px; background:var(--black); padding:6px 8px; }
+  .lang-btn { background:none; border:none; color:var(--light-muted); font-family:var(--font-body); font-size:11px; letter-spacing:2px; text-transform:uppercase; cursor:pointer; padding:6px 12px; transition:all 0.2s ease; }
+  .lang-btn.active { background:var(--accent); color:white; }
+  .lang-btn:hover:not(.active) { color:white; }
+
+  .hero { min-height:auto; display:flex; align-items:flex-start; background:transparent; padding:32px 0 0; }
+  .hero-left { width:100%; max-width:720px; margin:0 auto; background:rgba(255,255,255,0.45); backdrop-filter:blur(6px); display:flex; flex-direction:column; justify-content:flex-start; padding:32px 60px 40px; animation:slideInLeft 1s ease forwards; }
+  .logo-wrap { margin-bottom:28px; opacity:0; animation:fadeUp 0.8s ease 0.2s forwards; }
+  .logo-wrap img { height:76px; width:auto; display:block; }
+  .hero-eyebrow { font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--accent); margin-bottom:20px; font-weight:600; opacity:0; animation:fadeUp 0.8s ease 0.35s forwards; }
+  .hero-title { font-family:var(--font-body); font-size:clamp(36px,4.5vw,64px); font-weight:600; color:var(--black); line-height:1.1; margin-bottom:24px; opacity:0; animation:fadeUp 0.8s ease 0.5s forwards; }
+  .hero-greeting { font-size:17px; color:var(--black); margin-bottom:36px; font-weight:400; line-height:1.65; max-width:480px; opacity:0; animation:fadeUp 0.8s ease 0.7s forwards; }
+  .contact-photo-wrap { margin-top:32px; }
+  .contact-photo-frame { width:88px; height:88px; border:1.5px solid rgba(122,98,0,0.35); padding:2px; background:white; overflow:hidden; border-radius:50%; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+  .contact-photo { width:100%; height:100%; object-fit:cover; object-position:center 28%; display:block; border-radius:50%; }
+  .hero-title em { font-family:var(--font-accent); color:var(--accent); font-style:italic; font-weight:400; }
+  .hero-cta { display:inline-block; background:var(--accent); color:white; padding:16px 28px; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; font-weight:600; transition:all 0.3s ease; align-self:flex-start; opacity:0; animation:fadeUp 0.8s ease 0.9s forwards; max-width:100%; text-align:center; line-height:1.45; }
+  .hero-cta:hover { background:var(--black); color:white; }
+  .section { padding:72px 80px; background:transparent; }
+  #usluge { padding-bottom:28px; }
+  #primjeri { padding-top:40px; }
+  .section-label { font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--accent); margin-bottom:16px; font-weight:600; }
+  .section-title { font-family:var(--font-body); font-size:clamp(26px,3.2vw,40px); font-weight:600; line-height:1.2; margin-bottom:40px; max-width:560px; color:var(--black); }
+
+  .service-list { display:flex; flex-direction:column; gap:2px; background:var(--black); max-width:720px; }
+  .service-item { display:flex; align-items:center; gap:24px; background:var(--surface-strong); padding:24px 32px 24px 28px; transition:background 0.3s ease; }
+  .service-num { font-family:var(--font-accent); font-size:clamp(52px,6.5vw,72px); font-weight:400; font-style:italic; color:rgba(122,98,0,0.38); line-height:1; flex-shrink:0; min-width:48px; letter-spacing:-2px; user-select:none; align-self:center; transition:transform 0.3s ease, color 0.3s ease; }
+  .service-item:hover .service-num,
+  .service-item.is-open .service-num { color:#c9a84c; transform:scale(1.03); }
+  .service-body { flex:1; min-width:0; }
+  .service-item:hover { background:var(--black); color:white; }
+  .service-item:hover .service-desc,
+  .service-item.is-open .service-desc { color:var(--light-muted); }
+  .service-item.is-open { background:var(--black); color:white; }
+  .service-name { font-family:var(--font-body); font-size:20px; font-weight:600; margin-bottom:6px; line-height:1.3; }
+  .service-desc { font-size:15px; line-height:1.55; color:var(--muted); font-weight:400; margin:0; transition:color 0.3s; }
+  .see-more-btn { margin-top:12px; background:none; border:none; padding:0; font-family:var(--font-body); font-size:13px; letter-spacing:1px; color:var(--accent); cursor:pointer; text-decoration:underline; text-underline-offset:3px; font-weight:600; }
+  .service-item:hover .see-more-btn,
+  .proof-card:hover .see-more-btn { color:var(--accent); }
+  .service-item.is-open .see-more-btn,
+  .service-item.is-open:hover .see-more-btn { color:white; }
+  .see-more-content { max-height:0; overflow:hidden; opacity:0; transition:max-height 0.45s ease, opacity 0.35s ease, margin 0.35s ease; margin-top:0; }
+  .service-item.is-open .see-more-content,
+  .proof-card.is-open .see-more-content { max-height:520px; opacity:1; margin-top:14px; }
+  .see-more-content p { font-size:14px; line-height:1.7; color:var(--muted); margin:0; transition:color 0.3s; }
+  .see-more-content a { color:var(--accent); font-weight:600; text-underline-offset:3px; }
+  .service-item.is-open .see-more-content p,
+  .service-item:hover .see-more-content p { color:var(--light-muted); }
+  .service-item.is-open .see-more-content a,
+  .service-item:hover .see-more-content a { color:white; }
+
+  .proof-grid { display:grid; grid-template-columns:1fr; gap:20px; max-width:720px; }
+  .proof-card { background:var(--surface-strong); padding:28px 28px 28px 24px; border-left:3px solid var(--accent); transition:background 0.3s ease; }
+  .proof-tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:10px; }
+  .proof-link-btn { display:inline-block; margin-top:20px; background:var(--accent); color:white; padding:13px 28px; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; font-weight:600; transition:all 0.3s ease; }
+  .proof-link-btn:hover { background:var(--black); color:white; }
+  .proof-card.is-open { background:var(--black); color:white; }
+  .proof-card.is-open .proof-summary,
+  .proof-card.is-open .see-more-content p { color:var(--light-muted); }
+  .proof-card.is-open .see-more-btn,
+  .proof-card.is-open:hover .see-more-btn { color:white; }
+  .proof-card h3 { font-family:var(--font-body); font-size:19px; font-weight:600; margin-bottom:8px; line-height:1.3; }
+  .proof-summary { font-size:15px; line-height:1.55; color:var(--muted); margin:0; }
+
+  #zasto { padding-top:44px; padding-bottom:32px; }
+  .why-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; max-width:720px; }
+  .why-item { background:var(--surface-strong); padding:24px 28px 24px 24px; border-left:3px solid var(--accent); }
+  .why-item p { font-family:var(--font-body); font-size:17px; font-weight:600; line-height:1.45; margin:0; color:var(--black); }
+
+  .contact-section { padding:100px 80px; max-width:720px; background:transparent; }
+  .contact-closing { font-family:var(--font-body); font-size:clamp(22px,2.8vw,32px); font-weight:600; line-height:1.35; color:var(--black); margin-bottom:36px; max-width:560px; }
+  .contact-row { display:flex; align-items:center; gap:36px; }
+  .contact-section .contact-photo-wrap { margin-top:0; flex-shrink:0; }
+  .contact-section .contact-photo-frame { width:96px; height:96px; }
+  .contact-details { display:flex; flex-direction:column; gap:16px; }
+  .contact-detail { display:flex; align-items:center; gap:14px; font-size:17px; }
+  .contact-detail .ci-icon { width:44px; height:44px; background:var(--black); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.3s ease; }
+  .contact-detail .ci-icon svg { width:20px; height:20px; fill:white; }
+  .contact-detail:hover .ci-icon { background:var(--accent); }
+  .contact-detail a { color:var(--black); text-decoration:none; font-weight:600; }
+  .contact-detail a:hover { color:var(--accent); }
+
+  footer { background:var(--black); color:var(--light-muted); text-align:center; padding:40px 24px; font-size:14px; border-top:1px solid rgba(255,255,255,0.08); }
+  footer span { color:var(--accent); }
+  .footer-links { margin-top:14px; font-size:13px; }
+  .footer-links a { color:var(--light-muted); text-decoration:none; letter-spacing:0.5px; transition:color 0.2s; }
+  .footer-links a:hover { color:var(--accent); }
+
+  @keyframes slideInLeft { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+  @media (max-width:900px) {
+    body { background-attachment: scroll; }
+    .site-header { padding:10px 16px; }
+    .header-wa { padding:9px 14px; font-size:10px; letter-spacing:1.5px; }
+    .header-wa span { display:none; }
+    .hero { padding-top:24px; }
+    .hero-left { padding:24px 28px 32px; background:rgba(255,255,255,0.72); backdrop-filter:blur(8px); }
+    .logo-wrap img { height:62px; }
+    .service-item { gap:16px; padding:20px 24px 20px 20px; }
+    .service-num { min-width:40px; font-size:48px; }
+    #usluge { padding-bottom:20px; }
+    #primjeri { padding-top:32px; }
+    #zasto { padding-top:32px; padding-bottom:24px; }
+    .why-grid { grid-template-columns:1fr; }
+    .section { padding:60px 24px; }
+    .contact-section { padding:60px 24px; }
+    .contact-row { flex-direction:column; align-items:flex-start; gap:28px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://wa.me/385923244474?text=Zdravo!%20Zanima%20me%20suradnja%20s%20A%20Digital." data-en-href="https://wa.me/385923244474?text=Hello!%20I%27m%20interested%20in%20working%20with%20A%20Digital." target="_blank" class="header-wa">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span data-hr="Piši na WhatsApp" data-en="Message on WhatsApp">Piši na WhatsApp</span>
+  </a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('hr')">HR</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="logo-wrap"><img src="LOGO Anita.png" alt="A Digital"></div>
+    <p class="hero-eyebrow" data-hr="Digitalne usluge za lokalne biznise" data-en="Digital services for local businesses">Digitalne usluge za lokalne biznise</p>
+    <h1 class="hero-title" data-hr="Tvoj biznis<br>zaslužuje biti<br><em>vidljiv.</em>" data-en="Your business<br>deserves to be<br><em>visible.</em>">Tvoj biznis<br>zaslužuje biti<br><em>vidljiv.</em></h1>
+    <p class="hero-greeting" data-hr="Bok, ja sam Anita. Pomažem malim biznisima, iznajmljivačima i lokalnim poduzetnicima da budu vidljiviji na Googleu i društvenim mrežama." data-en="Hi, I'm Anita. I help small businesses, rental hosts and local entrepreneurs become more visible on Google and social media.">Bok, ja sam Anita. Pomažem malim biznisima, iznajmljivačima i lokalnim poduzetnicima da budu vidljiviji na Googleu i društvenim mrežama.</p>
+    <a href="https://wa.me/385923244474?text=Zdravo!%20Po%C5%A1aljem%20upit%20za%20besplatni%20pregled%20profila." data-en-href="https://wa.me/385923244474?text=Hello!%20I%27d%20like%20to%20request%20a%20free%20profile%20review." target="_blank" class="hero-cta" data-hr="Pošalji upit za besplatni pregled profila" data-en="Request a free profile review">Pošalji upit za besplatni pregled profila</a>
+  </div>
+</section>
+
+<!-- USLUGE -->
+<section class="section" id="usluge">
+  <p class="section-label" data-hr="Usluge" data-en="Services">Usluge</p>
+  <h2 class="section-title" data-hr="Što mogu učiniti za vaš biznis" data-en="What I can do for your business">Što mogu učiniti za vaš biznis</h2>
+
+  <div class="service-list">
+    <div class="service-item">
+      <span class="service-num" aria-hidden="true">1</span>
+      <div class="service-body">
+      <h3 class="service-name" data-hr="Google Business Profile" data-en="Google Business Profile">Google Business Profile</h3>
+      <p class="service-desc" data-hr="Audit, optimizacija, otvaranje profila i mjesečno vođenje. To je moj glavni fokus." data-en="Audit, optimisation, profile setup and monthly management. That's my main focus.">Audit, optimizacija, otvaranje profila i mjesečno vođenje. To je moj glavni fokus.</p>
+      <button type="button" class="see-more-btn" onclick="toggleSeeMore(this)" data-hr-more="Vidi više" data-en-more="See more" data-hr-less="Sakrij" data-en-less="Hide">Vidi više</button>
+      <div class="see-more-content">
+        <p data-hr="Ovo je moj glavni fokus jer smatram da je Google i dalje glavno mjesto gdje kupci pronalaze ono što trebaju. Na postojećem profilu pregledam sve što treba, napravim kratku analizu s prijedlozima promjena i nastavljam voditi profil dok vi radite svoj posao." data-en="This is my main focus because I believe Google is still the main place where customers find what they need. On your existing profile I review everything that needs attention, prepare a short analysis with suggested changes, and continue managing the profile while you focus on your business.">Ovo je moj glavni fokus jer smatram da je Google i dalje glavno mjesto gdje kupci pronalaze ono što trebaju. Na postojećem profilu pregledam sve što treba, napravim kratku analizu s prijedlozima promjena i nastavljam voditi profil dok vi radite svoj posao.</p>
+      </div>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-num" aria-hidden="true">2</span>
+      <div class="service-body">
+      <h3 class="service-name" data-hr="Instagram i društvene mreže" data-en="Instagram & social media">Instagram i društvene mreže</h3>
+      <p class="service-desc" data-hr="Optimizacija profila i mjesečno vođenje sadržaja." data-en="Profile optimisation and monthly content management.">Optimizacija profila i mjesečno vođenje sadržaja.</p>
+      <button type="button" class="see-more-btn" onclick="toggleSeeMore(this)" data-hr-more="Vidi više" data-en-more="See more" data-hr-less="Sakrij" data-en-less="Hide">Vidi više</button>
+      <div class="see-more-content">
+        <p data-hr="Društvene mreže ne moraju biti stres. Jednokratno vam sredim profil da izgleda uredno i profesionalno, uključujući opis, vizuale i postavke. Za vođenje društvenih mreža dostupna su tri paketa: BASIC, LEVEL UP i PRO." data-en="Social media doesn't have to be stressful. I can do a one-time profile tidy-up so it looks clean and professional, including bio, visuals and settings. For social media management, three packages are available: BASIC, LEVEL UP and PRO.">Društvene mreže ne moraju biti stres. Jednokratno vam sredim profil da izgleda uredno i profesionalno, uključujući opis, vizuale i postavke. Za vođenje društvenih mreža dostupna su tri paketa: BASIC, LEVEL UP i PRO.</p>
+      </div>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-num" aria-hidden="true">3</span>
+      <div class="service-body">
+      <h3 class="service-name" data-hr="Landing stranice" data-en="Landing pages">Landing stranice</h3>
+      <p class="service-desc" data-hr="Jednostavna online prezentacija vaših usluga, poput ove stranice." data-en="A simple online presentation of your services, like this page.">Jednostavna online prezentacija vaših usluga, poput ove stranice.</p>
+      <button type="button" class="see-more-btn" onclick="toggleSeeMore(this)" data-hr-more="Vidi više" data-en-more="See more" data-hr-less="Sakrij" data-en-less="Hide">Vidi više</button>
+      <div class="see-more-content">
+        <p data-hr="Ova stranica je dobar primjer: jednostavna, jasna, bez nepotrebnih stvari. Nije komplicirana web stranica, nego mjesto gdje ljudi brzo vide što nudite i kako vas kontaktirati. Mogu je postaviti na vašu domenu ili pomoći oko postavljanja. Bitno mi je da stvarno služi vašem biznisu, a ne da izgleda 'fancy' samo radi izgleda." data-en="This page is a good example: simple, clear, nothing unnecessary. It's not a complicated website, but a place where people quickly see what you offer and how to contact you. I can set it up on your domain or help with getting one. What matters to me is that it actually serves your business, not that it looks 'fancy' for the sake of it.">Ova stranica je dobar primjer: jednostavna, jasna, bez nepotrebnih stvari. Nije komplicirana web stranica, nego mjesto gdje ljudi brzo vide što nudite i kako vas kontaktirati. Mogu je postaviti na vašu domenu ili pomoći oko postavljanja. Bitno mi je da stvarno služi vašem biznisu, a ne da izgleda 'fancy' samo radi izgleda.</p>
+      </div>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-num" aria-hidden="true">4</span>
+      <div class="service-body">
+      <h3 class="service-name" data-hr="Digitalni sadržaji i QR vodiči" data-en="Digital content & QR guides">Digitalni sadržaji i QR vodiči</h3>
+      <p class="service-desc" data-hr="Cjenici, jelovnici, PDF materijali i vodiči za goste smještaja." data-en="Price lists, menus, PDF materials and guides for accommodation guests.">Cjenici, jelovnici, PDF materijali i vodiči za goste smještaja.</p>
+      <button type="button" class="see-more-btn" onclick="toggleSeeMore(this)" data-hr-more="Vidi više" data-en-more="See more" data-hr-less="Sakrij" data-en-less="Hide">Vidi više</button>
+      <div class="see-more-content">
+        <p data-hr="Posebno volim raditi vodiče za smještaj. Gost skenira QR i odmah ima sve na jednom mjestu: Wi-Fi, kontakt, preporuke u okolici, korisne informacije. Manje pitanja na recepciji, više vremena za goste. Također radim cjenike, jelovnike i ostale PDF materijale koje možete lako ažurirati kad se nešto promijeni." data-en="I especially love creating guides for accommodation. A guest scans a QR code and has everything in one place: Wi-Fi, contact details, local recommendations, useful info. Fewer questions at reception, more time for guests. I also create price lists, menus and other PDF materials you can easily update when something changes.">Posebno volim raditi vodiče za smještaj. Gost skenira QR i odmah ima sve na jednom mjestu: Wi-Fi, kontakt, preporuke u okolici, korisne informacije. Manje pitanja na recepciji, više vremena za goste. Također radim cjenike, jelovnike i ostale PDF materijale koje možete lako ažurirati kad se nešto promijeni.</p>
+      </div>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-num" aria-hidden="true">5</span>
+      <div class="service-body">
+      <h3 class="service-name" data-hr="Apartmani" data-en="Apartments">Apartmani</h3>
+      <p class="service-desc" data-hr="Otvaranje booking platformi, vođenje i administracija apartmana." data-en="Booking platform setup, management and apartment administration.">Otvaranje booking platformi, vođenje i administracija apartmana.</p>
+      <button type="button" class="see-more-btn" onclick="toggleSeeMore(this)" data-hr-more="Vidi više" data-en-more="See more" data-hr-less="Sakrij" data-en-less="Hide">Vidi više</button>
+      <div class="see-more-content">
+        <p data-hr="Pomažem iznajmljivačima s otvaranjem i postavljanjem booking platformi, vođenjem apartmana i svakodnevnom administracijom, od rezervacija i komunikacije s gostima do svega što treba da smještaj radi bez stresa." data-en="I help rental hosts with opening and setting up booking platforms, apartment management and day-to-day administration, from reservations and guest communication to everything needed so your accommodation runs smoothly.">Pomažem iznajmljivačima s otvaranjem i postavljanjem booking platformi, vođenjem apartmana i svakodnevnom administracijom, od rezervacija i komunikacije s gostima do svega što treba da smještaj radi bez stresa.</p>
+      </div>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-num" aria-hidden="true">6</span>
+      <div class="service-body">
+      <h3 class="service-name" data-hr="Canva edukacija" data-en="Canva education">Canva edukacija</h3>
+      <p class="service-desc" data-hr="Individualni online tutorial za samostalan rad u Canvi." data-en="Individual online tutorial for working independently in Canva.">Individualni online tutorial za samostalan rad u Canvi.</p>
+      <button type="button" class="see-more-btn" onclick="toggleSeeMore(this)" data-hr-more="Vidi više" data-en-more="See more" data-hr-less="Sakrij" data-en-less="Hide">Vidi više</button>
+      <div class="see-more-content">
+        <p data-hr='Canvu sam naučila kroz vlastiti rad i znam koliko može olakšati svakodnevnicu kad vas netko vodi od početka. Individualni online sat je za vas koji želite sami raditi objave i materijale, bez dugih tečajeva i bez gubljenja vremena. Imam i Canva tečaj. Više na <a href="https://www.adigital.hr/canva-crush" target="_blank" rel="noopener">adigital.hr/canva-crush</a>.' data-en='I learned Canva through my own work and I know how much it can simplify your day when someone guides you from the start. An individual online session is for you if you want to create posts and materials yourself, without long courses or wasted time. I also have a Canva course. Find out more at <a href="https://www.adigital.hr/canva-crush" target="_blank" rel="noopener">adigital.hr/canva-crush</a>.'>Canvu sam naučila kroz vlastiti rad i znam koliko može olakšati svakodnevnicu kad vas netko vodi od početka. Individualni online sat je za vas koji želite sami raditi objave i materijale, bez dugih tečajeva i bez gubljenja vremena. Imam i Canva tečaj. Više na <a href="https://www.adigital.hr/canva-crush" target="_blank" rel="noopener">adigital.hr/canva-crush</a>.</p>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIMJERI -->
+<section class="section" id="primjeri">
+  <p class="section-label" data-hr="Primjeri rada" data-en="Work examples">Primjeri rada</p>
+  <h2 class="section-title" data-hr="Neki od projekata" data-en="Some of the projects">Neki od projekata</h2>
+  <div class="proof-grid">
+    <article class="proof-card">
+      <p class="proof-tag" data-hr="Landing stranica" data-en="Landing page">Landing stranica</p>
+      <h3 data-hr="Argola Experience" data-en="Argola Experience">Argola Experience</h3>
+      <p class="proof-summary" data-hr="Četiri usluge klijenta spojene su na jednu stranicu s jasno odvojenim sekcijama, kontaktom i svim potrebnim informacijama." data-en="Four client services brought together on one page with clearly separated sections, contact details and all the information visitors need.">Četiri usluge klijenta spojene su na jednu stranicu s jasno odvojenim sekcijama, kontaktom i svim potrebnim informacijama.</p>
+      <a href="https://www.argola-experience.com" target="_blank" rel="noopener" class="proof-link-btn" data-hr="Prikaži projekt →" data-en="View project →">Prikaži projekt →</a>
+    </article>
+    <article class="proof-card">
+      <p class="proof-tag" data-hr="Digitalni vodič" data-en="Digital guide">Digitalni vodič</p>
+      <h3 data-hr="Apartman Katarina" data-en="Apartman Katarina">Apartman Katarina</h3>
+      <p class="proof-summary" data-hr="Digitalni vodič za apartman putem QR koda. Sve usluge i informacije koje gostima mogu poslužiti tijekom boravka, na jednom mjestu, uz manji broj upita." data-en="Digital apartment guide via QR code. Everything guests need during their stay in one place, with fewer questions to answer.">Digitalni vodič za apartman putem QR koda. Sve usluge i informacije koje gostima mogu poslužiti tijekom boravka, na jednom mjestu, uz manji broj upita.</p>
+      <a href="https://www.adigital.hr/appkatarina" target="_blank" rel="noopener" class="proof-link-btn" data-hr="Prikaži projekt →" data-en="View project →">Prikaži projekt →</a>
+    </article>
+    <article class="proof-card">
+      <p class="proof-tag" data-hr="Flyer" data-en="Flyer">Flyer</p>
+      <h3 data-hr="A Digital" data-en="A Digital">A Digital</h3>
+      <p class="proof-summary" data-hr="Elegantni flyer za vaše usluge, prilagođen printanju u najboljoj kvaliteti." data-en="Elegant flyers for your services, ready to print in the highest quality.">Elegantni flyer za vaše usluge, prilagođen printanju u najboljoj kvaliteti.</p>
+      <a href="https://canva.link/5xlq6pn8dlkwgjj" target="_blank" rel="noopener" class="proof-link-btn" data-hr="Prikaži projekt →" data-en="View project →">Prikaži projekt →</a>
+    </article>
+  </div>
+</section>
+
+<!-- ZAŠTO -->
+<section class="section" id="zasto">
+  <p class="section-label" data-hr="Zašto ja" data-en="Why me">Zašto ja</p>
+  <h2 class="section-title" data-hr="Zašto raditi sa mnom" data-en="Why work with me">Zašto raditi sa mnom</h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <p data-hr="Individualni pristup" data-en="Individual approach">Individualni pristup</p>
+    </div>
+    <div class="why-item">
+      <p data-hr="Bez dugoročnih ugovora" data-en="No long-term contracts">Bez dugoročnih ugovora</p>
+    </div>
+    <div class="why-item">
+      <p data-hr="Iskustvo s lokalnim biznisima i apartmanima" data-en="Experience with local businesses and apartments">Iskustvo s lokalnim biznisima i apartmanima</p>
+    </div>
+    <div class="why-item">
+      <p data-hr="Brza komunikacija putem WhatsAppa" data-en="Fast communication via WhatsApp">Brza komunikacija putem WhatsAppa</p>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="contact-section" id="kontakt">
+  <p class="section-label" data-hr="Kontakt" data-en="Contact">Kontakt</p>
+  <p class="contact-closing" data-hr="Vaš biznis zaista zaslužuje biti vidljiv. Dok vi radite svoj posao, digitalni dio radim ja." data-en="Your business truly deserves to be visible. While you focus on your work, I handle the digital side.">Vaš biznis zaista zaslužuje biti vidljiv. Dok vi radite svoj posao, digitalni dio radim ja.</p>
+  <div class="contact-row">
+    <div class="contact-photo-wrap">
+      <div class="contact-photo-frame">
+        <img src="anita.png" alt="Anita" class="contact-photo">
+      </div>
+    </div>
+    <div class="contact-details">
+      <div class="contact-detail">
+        <div class="ci-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <a href="https://wa.me/385923244474" target="_blank" rel="noopener">+385 92 324 4474 (WhatsApp)</a>
+      </div>
+      <div class="contact-detail">
+        <div class="ci-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <a href="mailto:kastelancic.anita@gmail.com">kastelancic.anita@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><span>A Digital</span> · <span data-hr="Sva prava pridržana" data-en="All rights reserved">Sva prava pridržana</span></p>
+  <p class="footer-links">
+    <a href="impressum.html" data-hr="Impressum" data-en="Legal notice">Impressum</a>
+    <span aria-hidden="true"> · </span>
+    <a href="privatnost.html" data-hr="Politika privatnosti" data-en="Privacy policy">Politika privatnosti</a>
+  </p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function updateSeeMoreButtons(lang) {
+    document.querySelectorAll(".see-more-btn").forEach(btn => {
+      const open = btn.closest(".service-item, .proof-card").classList.contains("is-open");
+      btn.textContent = btn.getAttribute(open ? "data-" + lang + "-less" : "data-" + lang + "-more");
+    });
+  }
+
+  function toggleSeeMore(btn) {
+    const card = btn.closest(".service-item, .proof-card");
+    card.classList.toggle("is-open");
+    const lang = document.documentElement.lang || "hr";
+    updateSeeMoreButtons(lang);
+  }
+
+  function setLang(lang) {
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.textContent.toLowerCase() === lang);
+    });
+    document.querySelectorAll("[data-hr][data-en]").forEach(el => {
+      if (el.classList.contains("see-more-btn")) return;
+      const text = el.getAttribute("data-" + lang);
+      if (text) el.innerHTML = text;
+    });
+    updateSeeMoreButtons(lang);
+    document.querySelectorAll("[data-en-href]").forEach(el => {
+      if (lang === "en") {
+        if (!el.hasAttribute("data-hr-href")) {
+          el.setAttribute("data-hr-href", el.getAttribute("href"));
+        }
+        el.setAttribute("href", el.getAttribute("data-en-href"));
+      } else {
+        const hrHref = el.getAttribute("data-hr-href");
+        if (hrHref) el.setAttribute("href", hrHref);
+      }
+    });
+    document.documentElement.lang = lang;
+    document.title = lang === "en"
+      ? "A Digital | Digital services for local businesses"
+      : "A Digital | Digitalne usluge za lokalne biznise";
+  }
+</script>
+</body>
+</html>

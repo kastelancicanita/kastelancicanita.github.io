@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politika privatnosti | A Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root { --black:#000; --accent:#7a6200; --muted:rgba(0,0,0,0.58); --font-body:"Cormorant Garamond",Georgia,serif; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:var(--font-body); background:url("pozadina.png") center top/cover fixed; color:var(--black); line-height:1.7; }
+  .top-bar { display:flex; justify-content:space-between; align-items:center; padding:16px 32px; }
+  .back-link { color:var(--accent); text-decoration:none; font-size:14px; font-weight:600; letter-spacing:1px; }
+  .back-link:hover { text-decoration:underline; }
+  .lang-switcher { display:flex; gap:4px; background:var(--black); padding:6px 8px; }
+  .lang-btn { background:none; border:none; color:rgba(255,255,255,0.72); font-family:var(--font-body); font-size:11px; letter-spacing:2px; text-transform:uppercase; cursor:pointer; padding:6px 12px; }
+  .lang-btn.active { background:var(--accent); color:white; }
+  .legal-wrap { max-width:680px; margin:0 auto; padding:40px 32px 80px; background:rgba(255,255,255,0.88); backdrop-filter:blur(6px); min-height:80vh; }
+  h1 { font-size:clamp(28px,4vw,40px); font-weight:600; margin-bottom:12px; }
+  .updated { font-size:14px; color:var(--muted); margin-bottom:32px; }
+  h2 { font-size:20px; font-weight:600; margin:28px 0 10px; color:var(--accent); }
+  p, li { font-size:17px; color:var(--black); margin-bottom:12px; }
+  ul { padding-left:20px; margin-bottom:16px; }
+  a { color:var(--accent); font-weight:600; }
+  footer { background:var(--black); color:rgba(255,255,255,0.72); text-align:center; padding:32px; font-size:14px; }
+  footer a { color:rgba(255,255,255,0.72); text-decoration:none; margin:0 8px; }
+  footer a:hover { color:var(--accent); }
+  @media (max-width:900px) { body { background-attachment:scroll; } .legal-wrap { padding:32px 24px 60px; } .top-bar { padding:12px 16px; } }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html" class="back-link" data-hr="← Natrag na stranicu" data-en="← Back to site">← Natrag na stranicu</a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('hr')">HR</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+<main class="legal-wrap">
+  <h1 data-hr="Politika privatnosti" data-en="Privacy policy">Politika privatnosti</h1>
+  <p class="updated" data-hr="Zadnje ažuriranje: 11. lipnja 2026." data-en="Last updated: 11 June 2026.">Zadnje ažuriranje: 11. lipnja 2026.</p>
+
+  <h2 data-hr="1. Tko smo" data-en="1. Who we are">1. Tko smo</h2>
+  <p id="privacy-controller" data-hr="Voditelj obrade osobnih podataka je A DIGITAL, obrt za usluge i izdavaštvo, Anita Kaštelančić (kontakt: kastelancic.anita@gmail.com). Više podataka nalazi se u Impressumu." data-en="The data controller is A DIGITAL, craft for services and publishing, Anita Kaštelančić (contact: kastelancic.anita@gmail.com). More details are in the Legal notice.">Voditelj obrade osobnih podataka je A DIGITAL, obrt za usluge i izdavaštvo, Anita Kaštelančić (kontakt: kastelancic.anita@gmail.com). Više podataka nalazi se u <a href="impressum.html">Impressumu</a>.</p>
+
+  <h2 data-hr="2. Koje podatke prikupljamo" data-en="2. What data we collect">2. Koje podatke prikupljamo</h2>
+  <p data-hr="Ova web stranica nema kontakt formu niti prikuplja podatke automatski. Podatke dobivamo tek kad nas sami kontaktirate putem WhatsAppa ili e-maila. Tada možemo primiti, primjerice:" data-en="This website has no contact form and does not collect data automatically. We only receive data when you contact us via WhatsApp or email. This may include:">Ova web stranica nema kontakt formu niti prikuplja podatke automatski. Podatke dobivamo tek kad nas sami kontaktirate putem WhatsAppa ili e-maila. Tada možemo primiti, primjerice:</p>
+  <ul>
+    <li data-hr="ime i prezime" data-en="first and last name">ime i prezime</li>
+    <li data-hr="broj telefona" data-en="phone number">broj telefona</li>
+    <li data-hr="e-mail adresu" data-en="email address">e-mail adresu</li>
+    <li data-hr="sadržaj vaše poruke i informacije o vašem poslovanju koje nam pošaljete" data-en="the content of your message and business information you choose to share">sadržaj vaše poruke i informacije o vašem poslovanju koje nam pošaljete</li>
+  </ul>
+  <p data-hr="Korištenjem WhatsAppa primjenjuju se i pravila platforme Meta. Klikom na vanjske linkove (npr. projekte klijenata) napuštate ovu stranicu." data-en="When using WhatsApp, Meta's platform terms also apply. By clicking external links (e.g. client projects) you leave this site.">Korištenjem WhatsAppa primjenjuju se i pravila platforme Meta. Klikom na vanjske linkove (npr. projekte klijenata) napuštate ovu stranicu.</p>
+
+  <h2 data-hr="3. Zašto koristimo podatke" data-en="3. Why we use your data">3. Zašto koristimo podatke</h2>
+  <p data-hr="Vaše podatke koristimo isključivo radi:" data-en="We use your data solely to:">Vaše podatke koristimo isključivo radi:</p>
+  <ul>
+    <li data-hr="odgovaranja na upite i komunikacije s vama" data-en="responding to your inquiries and communicating with you">odgovaranja na upite i komunikacije s vama</li>
+    <li data-hr="priprema ponude i pružanja dogovorenih usluga" data-en="preparing offers and providing agreed services">priprema ponude i pružanja dogovorenih usluga</li>
+    <li data-hr="ispunjavanja zakonskih obveza (npr. računovodstvo)" data-en="fulfilling legal obligations (e.g. accounting)">ispunjavanja zakonskih obveza (npr. računovodstvo)</li>
+  </ul>
+  <p data-hr="Pravna osnova: legitimni interes, izvršavanje ugovora ili koraci prije sklapanja ugovora, te zakonska obveza, ovisno o situaciji." data-en="Legal basis: legitimate interest, contract performance or steps prior to entering a contract, and legal obligation, depending on the situation.">Pravna osnova: legitimni interes, izvršavanje ugovora ili koraci prije sklapanja ugovora, te zakonska obveza, ovisno o situaciji.</p>
+
+  <h2 data-hr="4. Kolačići (cookies)" data-en="4. Cookies">4. Kolačići (cookies)</h2>
+  <p data-hr="Trenutačno ova stranica ne koristi analitičke alate niti marketinške kolačiće. Mogu se koristiti samo tehnički nužni kolačići povezani s radom stranice. Ako u budućnosti dodamo alate za analitiku (npr. Google Analytics), ova politika će biti ažurirana i prikazat će se obavijest o kolačićima." data-en="Currently this site does not use analytics or marketing cookies. Only technically necessary cookies related to site operation may be used. If we add analytics tools in the future (e.g. Google Analytics), this policy will be updated and a cookie notice will be shown.">Trenutačno ova stranica ne koristi analitičke alate niti marketinške kolačiće. Mogu se koristiti samo tehnički nužni kolačići povezani s radom stranice. Ako u budućnosti dodamo alate za analitiku (npr. Google Analytics), ova politika će biti ažurirana i prikazat će se obavijest o kolačićima.</p>
+
+  <h2 data-hr="5. Koliko dugo čuvamo podatke" data-en="5. How long we keep data">5. Koliko dugo čuvamo podatke</h2>
+  <p data-hr="Podatke iz komunikacije čuvamo onoliko koliko je potrebno za odgovor na upit, suradnju ili ispunjenje zakonskih obveza, a zatim ih brišemo ili arhiviramo u skladu s propisima." data-en="We keep communication data for as long as needed to respond, collaborate or meet legal obligations, then delete or archive it in line with regulations.">Podatke iz komunikacije čuvamo onoliko koliko je potrebno za odgovor na upit, suradnju ili ispunjenje zakonskih obveza, a zatim ih brišemo ili arhiviramo u skladu s propisima.</p>
+
+  <h2 data-hr="6. Vaša prava" data-en="6. Your rights">6. Vaša prava</h2>
+  <p data-hr="Imate pravo zatražiti pristup, ispravak ili brisanje podataka, ograničenje obrade, prigovor i prenosivost podataka. Zahtjev pošaljite na kastelancic.anita@gmail.com. Također imate pravo podnijeti pritužbu AZOP-u." data-en="You have the right to request access, correction or deletion of your data, restriction of processing, objection and data portability. Send requests to kastelancic.anita@gmail.com. You may also lodge a complaint with AZOP.">Imate pravo zatražiti pristup, ispravak ili brisanje podataka, ograničenje obrade, prigovor i prenosivost podataka. Zahtjev pošaljite na kastelancic.anita@gmail.com. Također imate pravo podnijeti pritužbu AZOP-u.</p>
+
+  <h2 data-hr="7. Sigurnost" data-en="7. Security">7. Sigurnost</h2>
+  <p data-hr="Podatke iz komunikacije čuvamo u okviru uobičajenih poslovnih alata (e-mail, WhatsApp) i poduzimamo razumne mjere da budu zaštićeni od neovlaštenog pristupa." data-en="Communication data is kept within standard business tools (email, WhatsApp) and we take reasonable measures to protect it from unauthorised access.">Podatke iz komunikacije čuvamo u okviru uobičajenih poslovnih alata (e-mail, WhatsApp) i poduzimamo razumne mjere da budu zaštićeni od neovlaštenog pristupa.</p>
+
+  <h2 data-hr="8. Promjene" data-en="8. Changes">8. Promjene</h2>
+  <p data-hr="Ovu politiku možemo povremeno ažurirati. Nova verzija bit će objavljena na ovoj stranici s datumom ažuriranja." data-en="We may update this policy from time to time. The new version will be published on this page with the update date.">Ovu politiku možemo povremeno ažurirati. Nova verzija bit će objavljena na ovoj stranici s datumom ažuriranja.</p>
+</main>
+
+<footer>
+  <p><a href="index.html">A Digital</a> · <a href="impressum.html" data-hr="Impressum" data-en="Legal notice">Impressum</a> · <a href="privatnost.html" data-hr="Politika privatnosti" data-en="Privacy policy">Politika privatnosti</a></p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.textContent.toLowerCase() === lang);
+    });
+    document.querySelectorAll("[data-hr][data-en]").forEach(el => {
+      if (el.id === "privacy-controller") return;
+      const text = el.getAttribute("data-" + lang);
+      if (text) el.textContent = text;
+    });
+    const ctrl = document.getElementById("privacy-controller");
+    if (ctrl) {
+      if (lang === "en") ctrl.innerHTML = 'The data controller is A DIGITAL, craft for services and publishing, Anita Kaštelančić (contact: kastelancic.anita@gmail.com). More details are in the <a href="impressum.html">Legal notice</a>.';
+      else ctrl.innerHTML = 'Voditelj obrade osobnih podataka je A DIGITAL, obrt za usluge i izdavaštvo, Anita Kaštelančić (kontakt: kastelancic.anita@gmail.com). Više podataka nalazi se u <a href="impressum.html">Impressumu</a>.';
+    }
+    document.querySelectorAll("footer a[data-hr]").forEach(el => {
+      const t = el.getAttribute("data-" + lang);
+      if (t) el.textContent = t;
+    });
+    document.documentElement.lang = lang;
+    document.title = lang === "en" ? "Privacy policy | A Digital" : "Politika privatnosti | A Digital";
+  }
+</script>
+</body>
+</html>

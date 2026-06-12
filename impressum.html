@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impressum | A Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root { --black:#000; --accent:#7a6200; --muted:rgba(0,0,0,0.58); --font-body:"Cormorant Garamond",Georgia,serif; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:var(--font-body); background:url("pozadina.png") center top/cover fixed; color:var(--black); line-height:1.7; }
+  .top-bar { display:flex; justify-content:space-between; align-items:center; padding:16px 32px; }
+  .back-link { color:var(--accent); text-decoration:none; font-size:14px; font-weight:600; letter-spacing:1px; }
+  .back-link:hover { text-decoration:underline; }
+  .lang-switcher { display:flex; gap:4px; background:var(--black); padding:6px 8px; }
+  .lang-btn { background:none; border:none; color:rgba(255,255,255,0.72); font-family:var(--font-body); font-size:11px; letter-spacing:2px; text-transform:uppercase; cursor:pointer; padding:6px 12px; }
+  .lang-btn.active { background:var(--accent); color:white; }
+  .legal-wrap { max-width:680px; margin:0 auto; padding:40px 32px 80px; background:rgba(255,255,255,0.88); backdrop-filter:blur(6px); min-height:80vh; }
+  h1 { font-size:clamp(28px,4vw,40px); font-weight:600; margin-bottom:32px; }
+  h2 { font-size:20px; font-weight:600; margin:28px 0 10px; color:var(--accent); }
+  p, li { font-size:17px; color:var(--black); margin-bottom:12px; }
+  ul { padding-left:20px; margin-bottom:16px; }
+  a { color:var(--accent); font-weight:600; }
+  footer { background:var(--black); color:rgba(255,255,255,0.72); text-align:center; padding:32px; font-size:14px; }
+  footer a { color:rgba(255,255,255,0.72); text-decoration:none; margin:0 8px; }
+  footer a:hover { color:var(--accent); }
+  @media (max-width:900px) { body { background-attachment:scroll; } .legal-wrap { padding:32px 24px 60px; } .top-bar { padding:12px 16px; } }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html" class="back-link" data-hr="← Natrag na stranicu" data-en="← Back to site">← Natrag na stranicu</a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('hr')">HR</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+<main class="legal-wrap">
+  <h1 data-hr="Impressum" data-en="Legal notice">Impressum</h1>
+
+  <h2 data-hr="Pružatelj usluga" data-en="Service provider">Pružatelj usluga</h2>
+  <p><strong data-hr="A DIGITAL, obrt za usluge i izdavaštvo" data-en="A DIGITAL, craft for services and publishing">A DIGITAL, obrt za usluge i izdavaštvo</strong></p>
+  <p data-hr="Vlasnica / odgovorna osoba: Anita Kaštelančić" data-en="Owner / responsible person: Anita Kaštelančić">Vlasnica / odgovorna osoba: Anita Kaštelančić</p>
+  <p data-hr="Sv. Martina 105, 21312 Podstrana – Sveti Martin" data-en="Sv. Martina 105, 21312 Podstrana – Sveti Martin, Croatia">Sv. Martina 105, 21312 Podstrana – Sveti Martin</p>
+  <p data-hr="Hrvatska" data-en="Croatia">Hrvatska</p>
+
+  <h2 data-hr="Kontakt" data-en="Contact">Kontakt</h2>
+  <p>E-mail: <a href="mailto:kastelancic.anita@gmail.com">kastelancic.anita@gmail.com</a></p>
+  <p>WhatsApp: <a href="https://wa.me/385923244474" target="_blank" rel="noopener">+385 92 324 4474</a></p>
+  <p data-hr="Web: www.adigital.hr" data-en="Web: www.adigital.hr">Web: www.adigital.hr</p>
+
+  <h2 data-hr="Podaci o registraciji" data-en="Registration details">Podaci o registraciji</h2>
+  <p data-hr="OIB: 25953623967" data-en="OIB (tax ID): 25953623967">OIB: 25953623967</p>
+  <p data-hr="Oblik poslovanja: paušalni obrt" data-en="Business form: flat-rate craft (paušalni obrt)">Oblik poslovanja: paušalni obrt</p>
+  <p data-hr="Upis u obrtni registar: 04. 03. 2026." data-en="Registered in the Craft Register: 4 March 2026">Upis u obrtni registar: 04. 03. 2026.</p>
+
+  <h2 data-hr="Upisane djelatnosti" data-en="Registered activities">Upisane djelatnosti</h2>
+  <ul id="activities-hr">
+    <li>73.11.0 – promidžba</li>
+    <li>58.11.9 – izdavanje ostalih knjiga elektroničkim putem</li>
+    <li>58.19.0 – ostale izdavačke djelatnosti osim izdavanja softvera, fotografija, gravura, razglednica, postera i plakata, digitalnim putem</li>
+    <li>70.20.0 – savjetovanje u vezi s poslovanjem i ostalim upravljanjem, računalnim putem</li>
+    <li>74.12.0 – djelatnosti grafičkog dizajna i vizualnih komunikacija</li>
+  </ul>
+  <ul id="activities-en" hidden>
+    <li>73.11.0 – advertising</li>
+    <li>58.11.9 – publishing of other books via electronic means</li>
+    <li>58.19.0 – other publishing activities except software publishing; photographs, engravings, postcards, posters and similar, via digital means</li>
+    <li>70.20.0 – business and other management consultancy, via computer</li>
+    <li>74.12.0 – graphic design and visual communication activities</li>
+  </ul>
+
+  <h2 data-hr="Nadležno tijelo" data-en="Supervisory authority">Nadležno tijelo</h2>
+  <p data-hr="Za pitanja zaštite osobnih podataka nadležan je Agencija za zaštitu osobnih podataka (AZOP)." data-en="For personal data protection matters, the Croatian Personal Data Protection Agency (AZOP) is the competent authority.">Za pitanja zaštite osobnih podataka nadležan je Agencija za zaštitu osobnih podataka (AZOP).</p>
+  <p><a href="https://azop.hr" target="_blank" rel="noopener">azop.hr</a></p>
+</main>
+
+<footer>
+  <p><a href="index.html">A Digital</a> · <a href="impressum.html" data-hr="Impressum" data-en="Legal notice">Impressum</a> · <a href="privatnost.html" data-hr="Politika privatnosti" data-en="Privacy policy">Politika privatnosti</a></p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.textContent.toLowerCase() === lang);
+    });
+    document.querySelectorAll("[data-hr][data-en]").forEach(el => {
+      if (el.tagName === "A" && !el.hasAttribute("data-hr")) return;
+      const text = el.getAttribute("data-" + lang);
+      if (text) el.textContent = text;
+    });
+    document.getElementById("activities-hr").hidden = lang !== "hr";
+    document.getElementById("activities-en").hidden = lang !== "en";
+    document.querySelectorAll("footer a[data-hr]").forEach(el => {
+      const t = el.getAttribute("data-" + lang);
+      if (t) el.textContent = t;
+    });
+    document.documentElement.lang = lang;
+    document.title = lang === "en" ? "Legal notice | A Digital" : "Impressum | A Digital";
+  }
+</script>
+</body>
+</html>
