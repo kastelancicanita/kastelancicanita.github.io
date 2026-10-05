@@ -36,18 +36,16 @@
   .lang-btn:hover:not(.active) { color:white; }
 
   .hero { min-height:auto; display:flex; align-items:flex-start; background:transparent; padding:32px 0 0; }
-  .hero-left { width:100%; max-width:720px; margin:0 auto; background:rgba(255,255,255,0.45); backdrop-filter:blur(6px); display:flex; flex-direction:column; justify-content:flex-start; padding:32px 60px 40px; animation:slideInLeft 1s ease forwards; }
+  .hero-left { width:100%; max-width:720px; min-width:0; margin:0 auto; background:rgba(255,255,255,0.45); backdrop-filter:blur(6px); display:flex; flex-direction:column; justify-content:flex-start; padding:32px 60px 40px; animation:slideInLeft 1s ease forwards; }
   .logo-wrap { margin-bottom:28px; opacity:0; animation:fadeUp 0.8s ease 0.2s forwards; }
   .logo-wrap img { height:76px; width:auto; display:block; }
   .hero-eyebrow { font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--accent); margin-bottom:20px; font-weight:600; opacity:0; animation:fadeUp 0.8s ease 0.35s forwards; }
   .hero-title { font-family:var(--font-body); font-size:clamp(36px,4.5vw,64px); font-weight:600; color:var(--black); line-height:1.1; margin-bottom:24px; opacity:0; animation:fadeUp 0.8s ease 0.5s forwards; }
-  .hero-greeting { font-size:17px; color:var(--black); margin-bottom:36px; font-weight:400; line-height:1.65; max-width:480px; opacity:0; animation:fadeUp 0.8s ease 0.7s forwards; }
+  .hero-greeting { font-size:17px; color:var(--black); margin-bottom:36px; font-weight:400; line-height:1.65; max-width:min(480px, 100%); opacity:0; animation:fadeUp 0.8s ease 0.7s forwards; }
   .contact-photo-wrap { margin-top:32px; }
   .contact-photo-frame { width:88px; height:88px; border:1.5px solid rgba(122,98,0,0.35); padding:2px; background:white; overflow:hidden; border-radius:50%; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
   .contact-photo { width:100%; height:100%; object-fit:cover; object-position:center 28%; display:block; border-radius:50%; }
   .hero-title em { font-family:var(--font-accent); color:var(--accent); font-style:italic; font-weight:400; }
-  .hero-cta { display:inline-block; background:var(--accent); color:white; padding:16px 28px; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; font-weight:600; transition:all 0.3s ease; align-self:flex-start; opacity:0; animation:fadeUp 0.8s ease 0.9s forwards; max-width:100%; text-align:center; line-height:1.45; }
-  .hero-cta:hover { background:var(--black); color:white; }
   .section { padding:72px 80px; background:transparent; }
   #usluge { padding-bottom:28px; }
   #primjeri { padding-top:40px; }
@@ -164,7 +162,7 @@
     <div class="logo-wrap"><img src="LOGO Anita.png" alt="A Digital"></div>
     <p class="hero-eyebrow" data-hr="Digitalne usluge za lokalne biznise" data-en="Digital services for local businesses">Digitalne usluge za lokalne biznise</p>
     <h1 class="hero-title" data-hr="Tvoj biznis<br>zaslužuje biti<br><em>vidljiv.</em>" data-en="Your business<br>deserves to be<br><em>visible.</em>">Tvoj biznis<br>zaslužuje biti<br><em>vidljiv.</em></h1>
-    <a href="https://wa.me/385923244474?text=Zdravo!%20Po%C5%A1aljem%20upit%20za%20besplatni%20pregled%20profila." data-en-href="https://wa.me/385923244474?text=Hello!%20I%27d%20like%20to%20request%20a%20free%20profile%20review." target="_blank" class="hero-cta" data-hr="Pošalji upit za besplatni pregled profila" data-en="Request a free profile review">Pošalji upit za besplatni pregled profila</a>
+    <p class="hero-greeting" data-hr="Digitalna podrška za male biznise koji žele izgledati profesionalno, biti vidljivi i imati manje toga na svojoj to-do listi." data-en="Digital support for small businesses that want to look professional, stay visible and have less on their to-do list.">Digitalna podrška za male biznise koji žele izgledati profesionalno, biti vidljivi i imati manje toga na svojoj to-do listi.</p>
   </div>
 </section>
 
@@ -182,7 +180,7 @@
 <!-- USLUGE -->
 <section class="section" id="usluge">
   <p class="section-label" data-hr="Usluge" data-en="Services">Usluge</p>
-  <h2 class="section-title" data-hr="Što mogu učiniti za vaš biznis" data-en="What I can do for your business">Što mogu učiniti za vaš biznis</h2>
+  <h2 class="section-title" data-hr="Što mogu učiniti za tvoj biznis" data-en="What I can do for your business">Što mogu učiniti za tvoj biznis</h2>
 
   <div class="service-list">
     <div class="service-item">
@@ -267,15 +265,9 @@
       <a href="https://www.argola-experience.com" target="_blank" rel="noopener" class="proof-link-btn" data-hr="Prikaži projekt →" data-en="View project →">Prikaži projekt →</a>
     </article>
     <article class="proof-card">
-      <p class="proof-tag" data-hr="Digitalni vodič" data-en="Digital guide">Digitalni vodič</p>
-      <h3 data-hr="Apartman Katarina" data-en="Apartman Katarina">Apartman Katarina</h3>
-      <p class="proof-summary" data-hr="Digitalni vodič za apartman putem QR koda. Sve usluge i informacije koje gostima mogu poslužiti tijekom boravka, na jednom mjestu, uz manji broj upita." data-en="Digital apartment guide via QR code. Everything guests need during their stay in one place, with fewer questions to answer.">Digitalni vodič za apartman putem QR koda. Sve usluge i informacije koje gostima mogu poslužiti tijekom boravka, na jednom mjestu, uz manji broj upita.</p>
-      <a href="https://www.adigital.hr/appkatarina" target="_blank" rel="noopener" class="proof-link-btn" data-hr="Prikaži projekt →" data-en="View project →">Prikaži projekt →</a>
-    </article>
-    <article class="proof-card">
       <p class="proof-tag" data-hr="Flyer" data-en="Flyer">Flyer</p>
       <h3 data-hr="A Digital" data-en="A Digital">A Digital</h3>
-      <p class="proof-summary" data-hr="Elegantni flyer za vaše usluge, prilagođen printanju u najboljoj kvaliteti." data-en="Elegant flyers for your services, ready to print in the highest quality.">Elegantni flyer za vaše usluge, prilagođen printanju u najboljoj kvaliteti.</p>
+      <p class="proof-summary" data-hr="Elegantni flyer za tvoje usluge, prilagođen printanju u najboljoj kvaliteti." data-en="Elegant flyers for your services, ready to print in the highest quality.">Elegantni flyer za tvoje usluge, prilagođen printanju u najboljoj kvaliteti.</p>
       <a href="https://canva.link/5xlq6pn8dlkwgjj" target="_blank" rel="noopener" class="proof-link-btn" data-hr="Prikaži projekt →" data-en="View project →">Prikaži projekt →</a>
     </article>
   </div>
@@ -304,7 +296,7 @@
 <!-- KONTAKT -->
 <section class="contact-section" id="kontakt">
   <p class="section-label" data-hr="Kontakt" data-en="Contact">Kontakt</p>
-  <p class="contact-closing" data-hr="Vaš biznis zaista zaslužuje biti vidljiv. Dok vi radite svoj posao, digitalni dio radim ja." data-en="Your business truly deserves to be visible. While you focus on your work, I handle the digital side.">Vaš biznis zaista zaslužuje biti vidljiv. Dok vi radite svoj posao, digitalni dio radim ja.</p>
+  <p class="contact-closing" data-hr="Tvoj biznis zaista zaslužuje biti vidljiv. Dok ti radiš svoj posao, digitalni dio radim ja." data-en="Your business truly deserves to be visible. While you focus on your work, I handle the digital side.">Tvoj biznis zaista zaslužuje biti vidljiv. Dok ti radiš svoj posao, digitalni dio radim ja.</p>
   <div class="contact-row">
     <div class="contact-photo-wrap">
       <div class="contact-photo-frame">
@@ -339,6 +331,7 @@
   </p>
 </footer>
 
+<script src="lang.js"></script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   document.querySelectorAll(".service-item").forEach((item) => {
     item.addEventListener("pointerenter", () => item.classList.add("is-hover"));
@@ -360,6 +353,7 @@
   }
 
   function setLang(lang) {
+    if (window.ADigitalLang) ADigitalLang.save(lang);
     document.querySelectorAll(".lang-btn").forEach(btn => {
       btn.classList.toggle("active", btn.textContent.toLowerCase() === lang);
     });
@@ -385,6 +379,9 @@
       ? "A Digital | Digital services for local businesses"
       : "A Digital | Digitalne usluge za lokalne biznise";
   }
+
+  var startLang = window.ADigitalLang && ADigitalLang.read();
+  if (startLang) setLang(startLang);
 </script>
 </body>
 </html>

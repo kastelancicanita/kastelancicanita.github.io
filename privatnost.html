@@ -84,8 +84,10 @@
   <p><a href="index.html">A Digital</a> · <a href="impressum.html" data-hr="Impressum" data-en="Legal notice">Impressum</a> · <a href="privatnost.html" data-hr="Politika privatnosti" data-en="Privacy policy">Politika privatnosti</a></p>
 </footer>
 
+<script src="lang.js"></script>
 <script>
   function setLang(lang) {
+    if (window.ADigitalLang) ADigitalLang.save(lang);
     document.querySelectorAll(".lang-btn").forEach(btn => {
       btn.classList.toggle("active", btn.textContent.toLowerCase() === lang);
     });
@@ -106,6 +108,9 @@
     document.documentElement.lang = lang;
     document.title = lang === "en" ? "Privacy policy | A Digital" : "Politika privatnosti | A Digital";
   }
+
+  var startLang = window.ADigitalLang && ADigitalLang.read();
+  if (startLang) setLang(startLang);
 </script>
 </body>
 </html>

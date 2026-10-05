@@ -51,8 +51,9 @@ a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline
 .rate-head, .tier { display:flex; justify-content:space-between; align-items:baseline; gap:18px; }
 .rate h3, .rate-group h3, .plan-card h3 { font-family:var(--font-body); font-size:22px; font-weight:600; line-height:1.25; min-width:0; }
 .rate-head h3 { flex:1; }
-.rate-price, .tier b, .plan-price { font-size:22px; font-weight:600; color:var(--accent); white-space:nowrap; font-style:normal; }
 .rate p, .rate-group p, .fine, .assess p, .terms li, .plan-card p, .package-card p { font-size:17px; line-height:1.6; color:var(--muted); margin-top:8px; }
+.rate p.rate-price, .plan-card p.plan-price, .tier b { font-size:26px; font-weight:700; color:var(--accent); white-space:nowrap; margin-top:0; }
+.plan-plus p.plan-price { color:#c9a84c; }
 .rate p strong, .fine strong { color:var(--black); font-weight:600; }
 
 .rate-group + .rate-group, .rate + .rate-group, .rate-group + .rate { margin-top:10px; }
@@ -70,7 +71,7 @@ a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline
 .package-card { margin-top:14px; padding:32px 28px; border:1px solid rgba(122,98,0,0.45); }
 .package-card h3 { font-family:var(--font-body); font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); font-weight:600; }
 .package-compare { margin-top:14px; font-size:17px; color:var(--muted); }
-.package-price { margin-top:2px; font-size:42px; line-height:1; font-weight:600; color:var(--accent); }
+.package-price { margin-top:2px; font-size:42px; line-height:1; font-weight:700; color:var(--accent); }
 .package-card ul, .plan-card ul { list-style:none; margin-top:16px; }
 .package-card li, .plan-card li { position:relative; padding-left:16px; font-size:17px; line-height:1.45; margin-top:6px; }
 .package-card li::before, .plan-card li::before { content:""; position:absolute; left:0; top:0.55em; width:6px; height:6px; background:var(--accent); }
@@ -118,4 +119,5 @@ footer span { color:var(--accent); }
 @media (max-width:560px) {
   .rate-head, .tier { flex-direction:column; align-items:flex-start; gap:4px; }
   .package-price { font-size:36px; }
+  .rate p.rate-price, .plan-card p.plan-price, .tier b { font-size:24px; }
 }

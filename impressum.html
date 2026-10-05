@@ -73,7 +73,7 @@
   </ul>
 
   <h2 data-hr="Nadležno tijelo" data-en="Supervisory authority">Nadležno tijelo</h2>
-  <p data-hr="Za pitanja zaštite osobnih podataka nadležan je Agencija za zaštitu osobnih podataka (AZOP)." data-en="For personal data protection matters, the Croatian Personal Data Protection Agency (AZOP) is the competent authority.">Za pitanja zaštite osobnih podataka nadležan je Agencija za zaštitu osobnih podataka (AZOP).</p>
+  <p data-hr="Za pitanja zaštite osobnih podataka nadležna je Agencija za zaštitu osobnih podataka (AZOP)." data-en="For personal data protection matters, the Croatian Personal Data Protection Agency (AZOP) is the competent authority.">Za pitanja zaštite osobnih podataka nadležna je Agencija za zaštitu osobnih podataka (AZOP).</p>
   <p><a href="https://azop.hr" target="_blank" rel="noopener">azop.hr</a></p>
 </main>
 
@@ -81,8 +81,10 @@
   <p><a href="index.html">A Digital</a> · <a href="impressum.html" data-hr="Impressum" data-en="Legal notice">Impressum</a> · <a href="privatnost.html" data-hr="Politika privatnosti" data-en="Privacy policy">Politika privatnosti</a></p>
 </footer>
 
+<script src="lang.js"></script>
 <script>
   function setLang(lang) {
+    if (window.ADigitalLang) ADigitalLang.save(lang);
     document.querySelectorAll(".lang-btn").forEach(btn => {
       btn.classList.toggle("active", btn.textContent.toLowerCase() === lang);
     });
@@ -100,6 +102,9 @@
     document.documentElement.lang = lang;
     document.title = lang === "en" ? "Legal notice | A Digital" : "Impressum | A Digital";
   }
+
+  var startLang = window.ADigitalLang && ADigitalLang.read();
+  if (startLang) setLang(startLang);
 </script>
 </body>
 </html>
